@@ -1,0 +1,25 @@
+{
+  "name": "goquo-agoda-static",
+  "version": "1.0.0",
+  "description": "Static html for Agoda",
+  "main": "dist/index.html",
+  "scripts": {
+    "start": "npm run build-static",
+    "build-static": "npm run clean && npm run build-html && npm run build-css && npm run copy-assets",
+    "build-html": "pug pug --out dist --pretty",
+    "build-css": "sass scss/main.scss:dist/assets/css/main.css",
+    "build-html-watch": "pug --watch pug --out dist --pretty",
+    "build-css-watch": "sass --watch scss/main.scss:dist/assets/css/main.css",
+    "copy-assets": "node copyAssets.js",
+    "clean": "del-cli dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shortgiraffe4",
+  "license": "MIT",
+  "devDependencies": {
+    "del-cli": "^1.1.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "sass": "^1.9.2",
+    "shelljs": "^0.8.2"
+  }
+}

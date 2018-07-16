@@ -1,0 +1,395 @@
+extends layout
+include mixins/hotel-item
+include mixins/map-modal
+block content
+    - var hotel1 = {name: "THE Hotel", showcase: "images/showcase_main.jpg", thumb1: "images/thumb1.jpg", thumb2: "images/thumb2.jpg", thumb3: "images/thumb3.jpg", rating: 7.3, ratingComment: "Very good", numberReviews: 88}
+    - var hotel2 = {name: "ABC Hotel", showcase: "images/showcase_main2.jpg", thumb1: "images/thumb4.jpg", thumb2: "images/thumb5.jpg", thumb3: "images/thumb6.jpg", rating: 8.2, ratingComment: "Excellent", numberReviews: 114}
+    - var hotel3 = {name: "Grand Hotel", showcase: "images/showcase_main.jpg", thumb1: "images/thumb1.jpg", thumb2: "images/thumb2.jpg", thumb3: "images/thumb3.jpg", rating: 7, ratingComment: "Very good", numberReviews: 56}
+    .search-box-2
+        .search-result-backdrop
+        .container
+            .destination.col-sm-4
+                i.search-icon.fa.fa-search
+                .input-holder
+                    input#destination-input(value="Ha Noi")
+                .destination-search-results.popup-result
+                    ul
+                        li.result-item
+                            i.fa.fa-hotel 
+                            span &nbsp Ha Noi, Viet Nam
+                        li.result-item
+                            i.fa.fa-star
+                            span &nbsp Ha Noi Club, Viet Nam
+                        li.result-item
+                            i.fa.fa-coffee
+                            span &nbsp Ha Noi Central, Viet Nam
+            .select-date.col-sm-4
+                .start-date
+                    .input-group
+                        span.input-group-addon
+                            i.fa.fa-calendar
+                        input.form-control#start-date-picker
+                //- .end-date
+                //-     .input-group
+                //-         span.input-group-addon
+                //-             i.fa.fa-calendar
+                //-         input.form-control#end-date-picker
+            .box-and-button.col-sm-4    
+                .occupancy-box
+                    i.box-icon.fa.fa-users
+                    .box-results
+                        .box-people
+                            span.loading.adults-text 3 adults, 
+                            span.loading.children-text 0 children
+                        .box-rooms  
+                            span.loading.rooms 3 rooms
+                    .occupancy-edit.popup-result
+                        .plusminusrow
+                            span.minus
+                                i.fa.fa-minus
+                            span.amount(data-amount="3") 3
+                            span.unit Rooms
+                            span.plus
+                                i.fa.fa-plus
+                        .plusminusrow
+                            span.minus
+                                i.fa.fa-minus
+                            span.amount(data-amount="3") 3
+                            span.unit Adults
+                            span.plus
+                                i.fa.fa-plus
+                        .plusminusrow
+                            span.minus
+                                i.fa.fa-minus
+                            span.amount(data-amount="0", data-allow-zero="true") 0
+                            span.unit Children
+                            span.plus
+                                i.fa.fa-plus
+                .search-button  
+                    a.loading(href="#") 
+                        span.search-text.loading Search
+    .results-container.container
+        .filters-container
+            .top-filters
+                .col-sm-3.top-filter
+                    .placeholder-title.loading
+                    .filter-placeholder.loading
+                        .checklist-box
+                        .checklist-text
+                    .slider-container.loading
+                        .title Price per night
+                        .slider-main#slider-range
+                        .range-amount
+                            .input-group
+                                span.input-group-addon đ
+                                input.form-control#amount1(type="number")
+                            .bridge
+                            .input-group
+                                span.input-group-addon đ
+                                input.form-control#amount2(type="number")
+                .col-sm-3.top-filter.have-dots
+                    .placeholder-title.loading
+                    .filter-placeholder.loading
+                            .checklist-box
+                            .checklist-text
+                    .filter-placeholder.loading
+                            .checklist-box
+                            .checklist-text
+                    .filter-placeholder.loading
+                            .checklist-box
+                            .checklist-text
+                    .filter-top-container.loading
+                        .title
+                            span Star rating
+                        .checkbox
+                            input(type="checkbox" id="st1" value="1") 
+                            label(for='st1')
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                span &nbsp (5)
+                        .checkbox
+                            input(type="checkbox" id="st2" value="2") 
+                            label(for='st2')
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                span &nbsp (7)
+                        .checkbox
+                            input(type="checkbox" id="st3" value="3") 
+                            label(for='st3')
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                span &nbsp (15)
+                        .checkbox
+                            input(type="checkbox" id="st4" value="4") 
+                            label(for='st4')
+                                i.fa.fa-star
+                                i.fa.fa-star
+                                span &nbsp (23)
+                        .checkbox
+                            input(type="checkbox" id="st5" value="5") 
+                            label(for='st5')
+                                i.fa.fa-star
+                                span &nbsp (10)
+                        .checkbox
+                            input(type="checkbox" id="st6" value="5") 
+                            label(for='st6')
+                                span No rating (3)
+                    .dots.loading
+                            span ...
+                .col-sm-3.top-filter
+                    .placeholder-title.loading
+                    .filter-placeholder.loading
+                            .checklist-box.rounded
+                            .checklist-text
+                    .filter-placeholder.loading
+                            .checklist-box.rounded
+                            .checklist-text
+                    .filter-placeholder.loading
+                            .checklist-box.rounded
+                            .checklist-text
+                    .filter-top-container.loading
+                        .title
+                            span Location rating
+                        .checkbox
+                            input(type="radio" name="location" id="lc1" value="1") 
+                            label(for='lc1')
+                                span 9+ Exceptional location (4)
+                        .checkbox
+                            input(type="radio" name="location" id="lc2" value="2") 
+                            label(for='lc2')
+                                span 8+ Excellent location (7)
+                        .checkbox
+                            input(type="radio" name="location" id="lc3" value="3" checked) 
+                            label(for='lc3')
+                                span 7+ Very good location (14)
+                .col-sm-3.top-filter
+                    .placeholder-title.loading
+                    .filter-placeholder.loading
+                            .checklist-box
+                            .checklist-text
+                    .filter-top-container.loading
+                        .title
+                            span Search results for
+                        input.filter-search(placeholder="Property name or keyword")
+        .row
+            .col-sm-3
+                .map-container.loading(data-toggle="modal" data-target="#map-modal")
+                    .map-placeholder
+                    img.map(src="images/map.svg")
+                    img.marker(src="images/pin-marker.svg")
+                    figcaption See Map
+                .filter-container-placeholder.loading
+                    .filter-placeholder.loading
+                        .checklist-box
+                        .checklist-text
+                    .filter-placeholder.loading
+                        .checklist-box
+                        .checklist-text
+                    .filter-placeholder.loading
+                        .checklist-box
+                        .checklist-text
+                .filter-container-placeholder.loading
+                    .filter-placeholder.loading
+                        .checklist-box
+                        .checklist-text
+                    .filter-placeholder.loading
+                        .checklist-box
+                        .checklist-text
+                    .filter-placeholder.loading
+                        .checklist-box
+                        .checklist-text
+                .filter-container.loading
+                    .title
+                        span Deals and discounts
+                    .checkbox
+                        input(type="checkbox" id="cb1" value="1") 
+                        label(for='cb1') 50% discount or more
+                    .checkbox
+                        input(type="checkbox" id="cb2" value="2") 
+                        label(for='cb2') Secret deals
+                .filter-container.loading
+                    .title
+                        span Location highlights
+                    .checkbox
+                        input(type="checkbox" id="cb3" value="1") 
+                        label(for='cb3') Restaurants (194)
+                    .checkbox
+                        input(type="checkbox" id="cb4" value="2") 
+                        label(for='cb4') Culture (115)
+                        
+
+            .col-sm-9
+                span.headline We’re searching through our database and partner websites for the best deals
+                .suppliers-container
+                    span.supplier.supplier-1
+                        img.supplier-agoda(src="/images/sup1.png")
+                    span.supplier.supplier-2
+                        img(src="/images/sup2.png")
+                    span.supplier.supplier-3
+                        img(src="/images/sup3.png")
+                    span.supplier.supplier-4
+                        img(src="/images/sup4.png")
+                    span.supplier.supplier-5
+                        img(src="/images/sup5.png")
+                    span.supplier.supplier-6
+                        img(src="/images/sup6.png")
+                .hotels-list.loading
+                    +hotel-item(hotel1)
+                    +hotel-item(hotel2)
+                    +hotel-item(hotel3)
+                .dummy-loading.loading
+                    .thumbnail.col-sm-4
+                    .text.col-sm-8
+                        .textline.line-1
+                        .textline.line-2
+                        .textline.line-3
+                        .textline.line-4
+                .dummy-loading.loading
+                    .thumbnail.col-sm-4
+                    .text.col-sm-8
+                        .textline.line-1
+                        .textline.line-2
+                        .textline.line-3
+                        .textline.line-4
+                .dummy-loading.loading
+                    .thumbnail.col-sm-4
+                    .text.col-sm-8
+                        .textline.line-1
+                        .textline.line-2
+                        .textline.line-3
+                        .textline.line-4
+
+    +mapModal
+block script
+    script.
+        var timer;
+
+        function setAmounts() {
+            //- console.log($( "#slider-range" ).slider( "values", 0 ), $( "#slider-range" ).slider( "values", 1 ));
+            $( "#amount1" ).val($( "#slider-range" ).slider( "values", 0 ));
+            $( "#amount2" ).val($( "#slider-range" ).slider( "values", 1 ));
+        }
+
+        $( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 15000000,
+            step: 500,
+            values: [ 1800000, 9000000 ],
+            slide: function( event, ui ) {
+                setAmounts();
+            }
+        });
+
+        setTimeout(function() {
+            $(".loading").removeClass("loading");
+
+            $('#start-date-picker').daterangepicker({
+                "autoApply": true,
+                "startDate": moment(),
+                "endDate": moment().add(1, 'days')
+            }, function(start, end, label) {
+            });
+            
+            setAmounts();
+            $(document).tooltip({
+                position: {
+                    my: "center top-40",
+                    at: "center top"
+                }
+            }); 
+        }, 3000)
+        
+        $('.hotel-thumbnails img').hover(function() {
+            var thisPreview = $($(this).parents().parents().parents(".hotel-item").children('.thumbnail-preview'));
+            var source_image = $(this).attr('src');
+            thisPreview.children('img').attr('src', source_image);
+            thisPreview.css('display', 'block');
+            if(timer) {
+                clearTimeout(timer);
+            }
+        })
+
+        $('.hotel-thumbnails img').mouseleave(function() {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                $('.thumbnail-preview img').attr('src', '');
+                $('.thumbnail-preview').css('display', 'none');
+            }, 200)
+        })
+
+        $('.hotel-item').click(function() {
+            location.href = "/hotel-detail";
+        })
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('google-map'), {
+            center: {lat: 21.008164, lng: 105.791835},
+            zoom: 16
+            });
+        }
+        
+        $('.occupancy-box').click(function() {
+            $('.occupancy-edit').css('display', 'block');
+            $('.search-result-backdrop').css('display', 'block');
+        });
+        $('#destination-input').click(function() {
+            $('.destination-search-results').css('display', 'block');
+            $('.search-result-backdrop').css('display', 'block');
+        });
+        $('.search-result-backdrop').click(function() {
+            $(this).css('display', 'none');
+
+            $('.popup-result').css('display', 'none');
+        })
+        $('.popup-result ul li').click(function() {
+            $('.search-result-backdrop').css('display', 'none');
+            $('.popup-result').css('display', 'none');
+        })
+
+        function setSpanText(unit, amount) {
+            if (unit === 'Adults') {
+                $('span.adults-text').text(amount + ' adults, ');
+            } else if (unit === 'Children') {
+                $('span.children-text').text(amount + ' children');
+            } else {
+                $('span.rooms').text(amount + ' rooms');
+            }
+        }
+
+        $('span.minus').click(function() {
+            var $amount = $(this).siblings('.amount');
+            var $unit = $(this).siblings('.unit');
+
+            var amount = $amount.attr('data-amount');
+            var allowZero = $amount.attr('data-allow-zero');
+            var unit = $unit.text();
+            if (amount > 1 || ( allowZero && amount == 1)) {
+            amount--;
+            $amount.attr('data-amount', amount);
+            $amount.text(amount);
+
+            setSpanText(unit, amount);
+            };
+        })
+        $('span.plus').click(function() {
+            var $amount = $(this).siblings('.amount');
+            var $unit = $(this).siblings('.unit');
+
+            var amount = $amount.attr('data-amount');
+            var unit = $unit.text();
+
+            amount++;
+            $amount.attr('data-amount', amount);
+            $amount.text(amount);
+
+            setSpanText(unit, amount);
+        })
