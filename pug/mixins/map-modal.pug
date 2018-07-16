@@ -1,9 +1,10 @@
 mixin mapModal()
   include map-hotel-item
-  - var item1 = {image: "images/map-hotel-1.jpg", image2: "images/map-hotel-5.jpg", hotelName: "THE Hotel", rating: 8.3, ratingComment: "Excellent"}
-  - var item2 = {image: "images/map-hotel-2.jpg", image2: "images/map-hotel-6.jpg", hotelName: "ABC Hotel", rating: 7.3, ratingComment: "Very Good"}
-  - var item3 = {image: "images/map-hotel-3.jpg", image2: "images/map-hotel-7.jpg", hotelName: "Grand Hotel", rating: 7.1, ratingComment: "Very Good"}
-  - var item4 = {image: "images/map-hotel-4.jpg", image2: "images/map-hotel-8.jpg", hotelName: "NO Hotel", rating: 8.1, ratingComment: "Excellent"}
+  - var path = "assets/images"
+  - var item1 = {image: `${path}/map-hotel-1.jpg`, image2: `${path}/map-hotel-5.jpg`, hotelName: `THE Hotel`, rating: 8.3, ratingComment: `Excellent`}
+  - var item2 = {image: `${path}/map-hotel-2.jpg`, image2: `${path}/map-hotel-6.jpg`, hotelName: `ABC Hotel`, rating: 7.3, ratingComment: `Very Good`}
+  - var item3 = {image: `${path}/map-hotel-3.jpg`, image2: `${path}/map-hotel-7.jpg`, hotelName: `Grand Hotel`, rating: 7.1, ratingComment: `Very Good`}
+  - var item4 = {image: `${path}/map-hotel-4.jpg`, image2: `${path}/map-hotel-8.jpg`, hotelName: `NO Hotel`, rating: 8.1, ratingComment: `Excellent`}
   #map-modal.modal.fade(role='dialog')
       .map-modal.modal-dialog.modal-lg
           // Modal content

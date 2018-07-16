@@ -2,9 +2,10 @@ extends layout
 include mixins/hotel-item
 include mixins/map-modal
 block content
-    - var hotel1 = {name: "THE Hotel", showcase: "images/showcase_main.jpg", thumb1: "images/thumb1.jpg", thumb2: "images/thumb2.jpg", thumb3: "images/thumb3.jpg", rating: 7.3, ratingComment: "Very good", numberReviews: 88}
-    - var hotel2 = {name: "ABC Hotel", showcase: "images/showcase_main2.jpg", thumb1: "images/thumb4.jpg", thumb2: "images/thumb5.jpg", thumb3: "images/thumb6.jpg", rating: 8.2, ratingComment: "Excellent", numberReviews: 114}
-    - var hotel3 = {name: "Grand Hotel", showcase: "images/showcase_main.jpg", thumb1: "images/thumb1.jpg", thumb2: "images/thumb2.jpg", thumb3: "images/thumb3.jpg", rating: 7, ratingComment: "Very good", numberReviews: 56}
+    - var path = "assets/images"
+    - var hotel1 = {name: `THE Hotel`, showcase: `${path}/showcase_main.jpg`, thumb1: `${path}/thumb1.jpg`, thumb2: `${path}/thumb2.jpg`, thumb3: `${path}/thumb3.jpg`, rating: 7.3, ratingComment: `Very good`, numberReviews: 88}
+    - var hotel2 = {name: `ABC Hotel`, showcase: `${path}/showcase_main2.jpg`, thumb1: `${path}/thumb4.jpg`, thumb2: `${path}/thumb5.jpg`, thumb3: `${path}/thumb6.jpg`, rating: 8.2, ratingComment: `Excellent`, numberReviews: 114}
+    - var hotel3 = {name: `Grand Hotel`, showcase: `${path}/showcase_main.jpg`, thumb1: `${path}/thumb1.jpg`, thumb2: `${path}/thumb2.jpg`, thumb3: `${path}/thumb3.jpg`, rating: 7, ratingComment: `Very good`, numberReviews: 56}
     .search-box-2
         .search-result-backdrop
         .container
@@ -181,8 +182,8 @@ block content
             .col-sm-3
                 .map-container.loading(data-toggle="modal" data-target="#map-modal")
                     .map-placeholder
-                    img.map(src="images/map.svg")
-                    img.marker(src="images/pin-marker.svg")
+                    img.map(src="assets/images/map.svg")
+                    img.marker(src="assets/images/pin-marker.svg")
                     figcaption See Map
                 .filter-container-placeholder.loading
                     .filter-placeholder.loading
@@ -228,17 +229,17 @@ block content
                 span.headline We’re searching through our database and partner websites for the best deals
                 .suppliers-container
                     span.supplier.supplier-1
-                        img.supplier-agoda(src="/images/sup1.png")
+                        img.supplier-agoda(src="assets/images/sup1.png")
                     span.supplier.supplier-2
-                        img(src="/images/sup2.png")
+                        img(src="assets/images/sup2.png")
                     span.supplier.supplier-3
-                        img(src="/images/sup3.png")
+                        img(src="assets/images/sup3.png")
                     span.supplier.supplier-4
-                        img(src="/images/sup4.png")
+                        img(src="assets/images/sup4.png")
                     span.supplier.supplier-5
-                        img(src="/images/sup5.png")
+                        img(src="assets/images/sup5.png")
                     span.supplier.supplier-6
-                        img(src="/images/sup6.png")
+                        img(src="assets/images/sup6.png")
                 .hotels-list.loading
                     +hotel-item(hotel1)
                     +hotel-item(hotel2)
@@ -327,7 +328,7 @@ block script
         })
 
         $('.hotel-item').click(function() {
-            location.href = "/hotel-detail";
+            location.href = "./hotel-detail.html";
         })
 
         function initMap() {

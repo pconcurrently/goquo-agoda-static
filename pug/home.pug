@@ -2,10 +2,10 @@ extends layout
 include mixins/square-tile
 include mixins/double-square-tile
 block content
-  - var item1 = {image: "images/promote1_background.png"}
-  - var doubleItem1 = {image: "images/promote2_background.jpg"}
+  - var item1 = {image: "assets/images/promote1_background.png"}
+  - var doubleItem1 = {image: "assets/images/promote2_background.jpg"}
   section.tile-container
-    img.sticky-image(src="images/skyline.png")
+    img.sticky-image(src="assets/images/skyline.png")
     section.tile-content-wrapper
       .tile-content
         .form-banner
@@ -126,7 +126,7 @@ block script
       $(".search-button").click(function() {
         $(this).addClass('on-load');
         setTimeout(function() {
-            location.href = "/search";
+            location.href = "./search.html";
         }, 2500);
       })
 
