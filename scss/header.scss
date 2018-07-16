@@ -39,6 +39,9 @@
                 color: $text_normal;
                 font-weight: 700;
                 font-size: 13px;
+                &:not(:first-child) {
+                    margin-left: 6px;
+                }
                 &:active::after,
                 &:hover,
                 &:focus,
