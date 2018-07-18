@@ -202,6 +202,29 @@ textarea {
     }
 }
 
+.checkbox-2 {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    input[type=radio] {
+        position: absolute;
+        left: -9999px;
+        visibility: hidden;
+        & + label {
+            padding: 6px 12px;
+            border: solid 2px transparent;
+            cursor: pointer;
+            transition: all .15s ease-in-out;
+            text-transform: uppercase;
+        }
+        &:checked + label,
+        & + label:hover {
+            color: $link_active;
+            border: solid 2px $link_active;
+        }
+    }
+}
+
 .fa-star {
     color: #f99e00;
 }

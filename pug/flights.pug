@@ -1,7 +1,115 @@
-extends layout-noheader
+extends layout
 
 block content
     .cover-container
         section.titles
             h1 Book [flights] online
             h2 Search and compare hundreds of travel sites at once
+        section.navs-section
+            ul
+                li 
+                    a(href="./home.html") Rooms
+                li 
+                    a.active Flights
+        section.flights-form
+            .flights-form__header
+                .header__item.round-trip.active Round-trip
+                .header__item.one-way One-way
+                .header__item.multi-city Multi-city
+            .flights-form__body
+                .oneform
+                    .form-row 
+                        .input-wrapper
+                            input(value="Hanoi (HAN)")
+                            .depart-return.popup-result
+                                ul
+                                    li(title="Ha Noi, Viet Nam")
+                                        .result-item
+                                        i.fa.fa-space-shuttle 
+                                        span &nbsp Ha Noi, Viet Nam
+                            .input-addon.right
+                                span.fa.fa-exchange
+                        .input-wrapper
+                            input(placeholder="To where?")
+                            .depart-return.popup-result
+                                ul
+                                    li(title="Sai Gon, Viet Nam")
+                                        .result-item
+                                        i.fa.fa-space-shuttle 
+                                        span &nbsp Sai Gon, Viet Nam
+                    .form-row 
+                        .input-wrapper
+                            input.addon-left.datetimeinput(placeholder="Depart - Return")
+                            .input-addon
+                                span.fa.fa-calendar-o
+                        .input-wrapper
+                            select.goingtime
+                                option(value="Anytime") Anytime
+                                option(value="Morning") Morning
+                                option(value="Afternoon") Afternoon
+                                option(value="Evening") Evening
+                            .sum-traveler 1 adult, Economy
+                            .cabin-traveler.popup-result
+                                h4.title Cabin class
+                                .cabin-class-wrapper
+                                    .checkbox-2
+                                        input(type="radio" name="cabinclass" id="cc1" value="Economy" checked) 
+                                        label(for='cc1')
+                                            span Economy
+                                    .checkbox-2
+                                        input(type="radio" name="cabinclass" id="cc2" value="Business") 
+                                        label(for='cc2')
+                                            span Business
+                                    .checkbox-2
+                                        input(type="radio" name="cabinclass" id="cc3" value="Premium Economy") 
+                                        label(for='cc3')
+                                            span Premium Economy
+                                    .checkbox-2
+                                        input(type="radio" name="cabinclass" id="cc4" value="First" ) 
+                                        label(for='cc4')
+                                            span First
+                                    .checkbox-2
+                                        input(type="radio" name="cabinclass" id="cc5" value="Multiple" ) 
+                                        label(for='cc5')
+                                            span Multiple
+                                h4.title Travelers
+                                .plusminusrow
+                                    span.unit Adults
+                                    .widgets
+                                        span.minus
+                                            i.fa.fa-minus
+                                        span.amount(data-amount="1") 1
+                                        span.plus
+                                            i.fa.fa-plus
+                                .plusminusrow
+                                    span.unit Chilren
+                                    .widgets
+                                        span.minus
+                                            i.fa.fa-minus
+                                        span.amount(data-amount="0") 0
+                                        span.plus
+                                            i.fa.fa-plus
+                                .plusminusrow
+                                    span.unit Infants
+                                    .widgets
+                                        span.minus
+                                            i.fa.fa-minus
+                                        span.amount(data-amount="0", data-allow-zero="true") 0
+                                        span.plus
+                                            i.fa.fa-plus
+                    .form-row 
+                        .input-wrapper
+                            select
+                                option(value="1") Economy
+                                option(value="2") Business
+                                option(value="3") Premium Economy
+                                option(value="4") First
+            .buttons-row
+                button.btn.remove REMOVE
+                button.btn.add ADD
+            .buttons-row.second-row
+                button.btn.clearall RESET ALL
+                .wrapper
+                    .sum-traveler 1 adult, Economy
+            button.search-btn.btn.btn-block.btn-primary Search
+        
