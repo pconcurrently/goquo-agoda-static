@@ -118,7 +118,7 @@ var firstForm = `
                     </div>
                 </div>
             </div>
-            <div class="form-row">
+            <div class="form-row thirdrow">
                 <div class="input-wrapper">
                     <select>
                         <option value="1">Economy</option>
@@ -171,7 +171,7 @@ var oneform = `
                     </select>
                 </div>
             </div>
-            <div class="form-row">
+            <div class="form-row thirdrow">
                 <div class="input-wrapper">
                     <select>
                         <option value="1">Economy</option>
@@ -254,7 +254,7 @@ var attachEvents = function () {
     $('span.minus').click(function () {
         var $amount = $(this).siblings('.amount');
         var amount = $amount.attr('data-amount');
-        if (amount > 0) {
+        if (amount > 0 && sum > 1) {
             amount--;
             $amount.attr('data-amount', amount);
             $amount.text(amount);

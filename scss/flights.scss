@@ -1,3 +1,6 @@
+body.flights {
+    min-width: 21.3em;
+}
 .cover-container {
     min-height: 620px;
     background-image: url('../images/flights.jpg');
@@ -25,7 +28,26 @@ section.titles {
 }
 
 section.navs-section {
-    width: 70%;
+    width: 100%;
+    @media (min-width: 20em) {
+        width: 20.2em;
+    }
+
+    @media (min-width: 35.5em) {
+        width: 36.6em;
+    }
+
+    @media (min-width: 48em) {
+        width: 50em;
+    }
+
+    @media (min-width: 64em) {
+        width: 67em;
+    }
+
+    @media (min-width: 74em) {
+        width: 78em;
+    }
     margin: 0 auto;
     ul {
         @extend .flex-box;
@@ -61,7 +83,24 @@ section.navs-section {
 }
 
 section.flights-form {
-    width: 70%;
+    width: 100%;
+
+    @media (min-width: 20em) {
+        width: 20.2em;
+    }
+    @media (min-width: 35.5em) {
+        width: 36.6em;
+    }
+    @media (min-width: 48em) {
+        width: 50em;
+    }
+    @media (min-width: 64em) {
+        width: 67em;
+    }
+    @media (min-width: 74em) {
+        width: 78em;
+    }
+
     margin: 0 auto;
     min-height: 170px;
     padding: 15px 17px;
@@ -94,14 +133,41 @@ section.flights-form {
     .flights-form__body {
         margin-top: 16px;
         transition: all 0.3s linear;
+        .oneform {
+            display: block;
+            @media (min-width: 64em) {
+                display: flex;
+                flex-wrap: nowrap;
+            }
+        }
+
         .form-row {
+            width: 100%;
+            @media (min-width: 64em) {
+                width: 50%;
+            }
+            &.thirdrow {
+                @media (min-width: 64em) {
+                    display: none;
+                }
+            }
             @extend .flex-box;
+            flex-wrap: wrap;
             margin-top: 6px;
             > div.input-wrapper {
-                width: 50%;
+                width: 100%;
+
+                @media (min-width: 48em) {
+                    width: 50%;
+                }
                 position: relative;
                 &:not(:first-child) {
-                    margin-left: 4px;
+                    padding-left: 0;
+                    padding-top: 4px;
+                    @media (min-width: 48em) {
+                        padding-left: 4px;
+                        padding-top: 0;
+                    }
                 }
                 input, .sum-traveler {
                     display: block;
@@ -329,5 +395,30 @@ section.flights-form {
         .buttons-row {
             @extend .flex-box;
         }
+    }
+}
+
+.flights-footer-container {
+    background-color: #333;
+    padding: 30px;
+
+    h5 {
+        margin: 0;
+        text-align: center;
+        margin-bottom: 42px;
+    }
+    p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+        font-weight: 200;
+        text-align: center;
+    }
+    ul.logos {
+        text-align: center;
+        li {
+            list-style: none;
+            display: inline-block;
+        }
+        margin-bottom: 42px;
     }
 }

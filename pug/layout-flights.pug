@@ -13,7 +13,8 @@ html(lang='')
     link(rel='stylesheet', href='assets/css/jquery-ui.min.css')
     link(rel='stylesheet', href='assets/css/main.css')
 
-  body
+  body.flights
+    include partials/header
 
     block content
 
@@ -24,5 +25,5 @@ html(lang='')
     script(src='assets/js/jquery-ui.min.js')
     //- script(async defer src="https://buttons.github.io/buttons.js")
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv2Dq4WB_Y5ozSFlleRFubxftgyiLUF1c&callback=initMap" async="", defer="")
-    //- script(src='assets/js/main.js')
+    script(src='assets/js/main.js')
     block script
