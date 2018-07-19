@@ -249,7 +249,6 @@ var attachEvents = function () {
     })
     $('.cabin-traveler').click(function (e) {
         e.stopPropagation();
-
     })
     $('span.minus').click(function () {
         var $amount = $(this).siblings('.amount');

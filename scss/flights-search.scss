@@ -1,0 +1,252 @@
+.flights-search.wrapper {
+    position: relative;
+    .flights-search__search-box {
+        background-color: #515b62;
+        padding: 20px;
+        color: #fff;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        transition: transform .3s ease-in-out;
+        transform: translateY(-106px);
+        overflow: hidden;
+        &.active {
+            transform: translateY(0);
+            ul.search-box__controls, .compare-to, .search-box__search-form {
+                transform: translateY(0);
+            }
+        }
+        ul.search-box__controls {
+            padding-top: 12px;
+            margin-bottom: 24px;
+            position: relative;
+            transition: transform .3s ease-in-out;
+            transform: translateY(-30px);
+            li {
+                list-style: none;
+                display: inline-block;
+                text-transform: uppercase;
+                padding: 0 12px;
+                font-size: 10px;
+                font-weight: 600;
+            }
+        }
+
+        .search-box__search-form {
+            @extend .flex-box;
+            position: relative;
+            transition: transform .3s ease-in-out;
+            transform: translateY(50px);
+            .search-form__input-wrapper {
+                width: calc((100% - 44px) / 4);
+                position: relative;
+                &:not(:first-child) {
+                    padding-left: 4px;
+                }
+
+                input {
+                    width: 100%;
+                    height: 36px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding: 0 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    box-shadow: none;
+                    color: #6d8494;
+                    border-color: #e0e7ed;
+                }
+            }
+            span.submit {
+                width: 36px;
+                height: 36px;
+                background-color: $link_active;
+                margin-left: 4px;
+            }
+        }
+
+        .compare-to {
+            position: relative;
+            margin-top: 24px;
+            transition: transform .3s ease-in-out;
+            transform: translateY(106px);
+            > div {
+                display: inline-block;
+            }
+            .compare-to__title {
+                margin-right: 30px;
+            }
+            .checkbox.custom-checkbox {
+                margin-right: 30px;
+                label {
+                    padding-left: 18px;
+
+                }
+            }
+        }
+    }
+}
+
+.depart-destination {
+    @extend .box-shadow;
+    position: absolute;
+    width: auto;
+    top: 180px;
+    left: 20px;
+    z-index: 1200;
+    background-color: #fff;
+    transition: all .3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+    &.active {
+        max-height: 300px;
+    }
+    &#destination-popup {
+        left: 248px;
+        @media (min-width: 980px) {
+            left: calc(25% + 4px);
+        }
+    }
+    ul {
+        li {
+            list-style: none;
+            font-size: 14px;
+            line-height: 30px;
+            padding: 6px 18px;
+            text-align: left;
+            cursor: pointer;
+            &:hover {
+                background-color: $link_active;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.flights-page-content {
+    min-height: 800px;
+    padding: 0 20px;
+    padding-top: 80px;
+    @extend .flex-box;
+    background-color: #fafafc;
+
+    .flights-page-content__left-col {
+        width: 25%;
+        background-color: #fff;
+        margin-top: 20px;
+        .filter-reset {
+            @extend .flex-box;
+            width: 100%;
+            background-color: $link_active;
+            color: #fff;
+            margin: 20px 0;
+            &.loading {
+                background-color: $link_active;
+                @extend .animated-background-2;
+                > div {
+                    opacity: 0;
+                }
+            }
+            > div {
+                text-align: center;
+                margin: 12px 0;
+                padding: 0 12px;
+                opacity: 1;
+            }
+            .stats {
+                width: 70%;
+                border-right: solid 1px #fff;
+            }
+            .reset-btn {
+                width: 30%;
+                text-transform: uppercase;
+                font-size: 11px;
+                line-height: 22px;
+            }
+        }
+        .filter-wrapper {
+            padding: 20px 20px;
+            border-bottom: solid 1px #ddd;
+            .filter-inner {
+                display: block;
+            }
+            h4 {
+                margin: 0;
+            }
+            select {
+                color: #488bf8;
+                box-shadow: none;
+                border-color: #92aabb;
+                height: 40px;
+                border: 1px solid #92aabb;
+                width: 100%;
+                margin-top: 20px;
+                padding: 6px 12px;
+            }
+            .checkbox {
+                label {
+                    width: 100%;
+                    span.addon {
+                        float: right;
+                    }
+                }
+            }
+            &.loading {
+                .filter-inner {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .flights-page-content__right-col {
+        width: 75%;
+        padding: 20px;
+        padding-right: 0;
+
+        .flight-item {
+            @extend .flex-box;
+            padding: 30px 0;
+            background-color: #fff;
+            cursor: pointer;
+            box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2);
+            transition: all .2s ease-in-out;
+
+            &:not(:first-child) {
+                margin-top: 12px;
+            }
+            &:hover {
+                box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+            }
+
+            .details {
+                @extend .flex-box;
+                width: 75%;
+                > div {
+                    width: 25%;
+                    text-align: center;
+                }
+                .stops {
+                    padding: 0 25px;
+                    .line {
+                        height: 2px;
+                        background-color: #6d8494;
+                        margin-top: 6px;
+                        margin-bottom: 12px;
+                    }
+                }
+                .flight-image-container {
+                    img {
+                        width: 35px;
+                    }
+                }
+            }
+            .actions {
+                width: 25%;
+                text-align: center;
+            }
+        }
+    }
+}
+
+

@@ -1,0 +1,19 @@
+mixin flightItem(item)
+    .flight-item
+        .details
+            .flight-image-container
+                img(src=item.img) 
+                .title= item.airline
+            .time-depart 
+                .time= item.timeDepart
+                .location= item.locationDepart
+            .stops 
+                .line
+                div= item.stops
+            .time-return
+                .time= item.timeReturn
+                .location= item.locationReturn
+            .time-duration= item.duration
+        .actions
+            .price= item.price
+

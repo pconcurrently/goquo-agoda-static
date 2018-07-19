@@ -1,0 +1,173 @@
+extends layout
+include mixins/flight-item
+
+block content
+    - var item1 = {img: "assets/images/vietjetair.png", airline: 'VietJet Air', timeDepart: '10:00 PM', locationDepart: 'HAN', stops: 'nonstop', timeReturn: '11:15 PM', locationReturn: 'DAD', duration: '1h15m', price: '1260000'}
+    - var item2 = {img: "assets/images/vietnamairlines.png", airline: 'Vietnam Airlines', timeDepart: '10:00 PM', locationDepart: 'HAN', stops: 'nonstop', timeReturn: '11:15 PM', locationReturn: 'DAD', duration: '1h15m', price: '1260000'}
+    .flights-search.wrapper
+        .flights-search__search-box
+            ul.search-box__controls
+                li.ctrl-round-trip Round-trip
+                li.ctrl-one-way One-way
+                li.ctrl-multi-city Multi-city
+            .search-box__search-form
+                .search-form__input-wrapper
+                    input.popup-input(value="Hanoi (HAN)", data-popup-target="#depart-popup")
+                .search-form__input-wrapper
+                    input.popup-input(value="Hanoi (HAN)", data-popup-target="#destination-popup")
+                .search-form__input-wrapper
+                    input.goingtime
+                .search-form__input-wrapper
+                    input(value="1 adult, Economy")
+                span.submit
+                    <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="#fff"><path d="M31.88 12.32l-1.43 1.4L39.56 23H20v2h19.56l-9.11 9.27 1.43 1.41L43.35 24 31.88 12.32M11 23h6v2h-6zM5 23h4v2H5z"></path></svg>
+            .compare-to
+                .compare-to__title Compare vs. Agoda
+                .checkbox.custom-checkbox
+                    input(type="radio", name="compareto", id="cb1", value="1", checked) 
+                    label(for='cb1') Priceline
+                .checkbox.custom-checkbox
+                    input(type="radio", name="compareto," id="cb2", value="2") 
+                    label(for='cb2') CheapOair
+                .checkbox.custom-checkbox
+                    input(type="radio", name="compareto", id="cb3", value="3") 
+                    label(for='cb3') JustFly
+                .checkbox.custom-checkbox
+                    input(type="radio", name="compareto", id="cb4", value="4") 
+                    label(for='cb4') None
+    .depart-destination.popup-result#depart-popup
+                        ul
+                            li(title="Ha Noi, Viet Nam")
+                                .result-item
+                                i.fa.fa-space-shuttle 
+                                span &nbsp Ha Noi, Viet Nam
+                            li(title="Ha Noi, Viet Nam")
+                                .result-item
+                                i.fa.fa-space-shuttle 
+                                span &nbsp Ha Noi, Viet Nam
+                            li(title="Ha Noi, Viet Nam")
+                                .result-item
+                                i.fa.fa-space-shuttle 
+                                span &nbsp Ha Noi, Viet Nam
+    .depart-destination.popup-result#destination-popup
+                        ul
+                            li(title="Ha Noi, Viet Nam")
+                                .result-item
+                                i.fa.fa-space-shuttle 
+                                span &nbsp Ha Noi, Viet Nam
+                            li(title="Ha Noi, Viet Nam")
+                                .result-item
+                                i.fa.fa-space-shuttle 
+                                span &nbsp Ha Noi, Viet Nam
+                            li(title="Ha Noi, Viet Nam")
+                                .result-item
+                                i.fa.fa-space-shuttle 
+                                span &nbsp Ha Noi, Viet Nam
+    .flights-page-content
+        .flights-page-content__left-col
+            .filter-reset.loading
+                .stats 184 out of 184
+                .reset-btn Reset
+            .filter-wrapper
+                h4 Sort
+                select
+                    option(value="Cheapest") Cheapest
+                    option(value="Recommended", selected) Recommended
+                    option(value="Quickest") Quickest
+                    option(value="Earliest take-off (HAN)") Earliest take-off (HAN)
+                    option(value="Earliest landing (DAD)") Earliest landing (DAD)
+            .filter-wrapper.loading
+                .placeholder-title.loading
+                .filter-placeholder.loading
+                    .checklist-box
+                    .checklist-text
+                .filter-placeholder.loading
+                    .checklist-box
+                    .checklist-text
+                .filter-placeholder.loading
+                    .checklist-box
+                    .checklist-text
+                .filter-inner
+                    h4 Stops
+                    .checkbox
+                        input(type="checkbox" id="st1" value="1") 
+                        label(for='st1') nonstop
+                            span.addon 1260300đ
+                    .checkbox
+                        input(type="checkbox" id="st2" value="2") 
+                        label(for='st2') 1 stop
+                            span.addon 2216500đ
+                    .checkbox
+                        input(type="checkbox" id="st3" value="3") 
+                        label(for='st3') 2+ stops
+                            span.addon 3265200đ
+            .filter-wrapper.loading
+                .placeholder-title.loading
+                .filter-placeholder.loading
+                    .checklist-box
+                    .checklist-text
+                .filter-placeholder.loading
+                    .checklist-box
+                    .checklist-text
+                .filter-placeholder.loading
+                    .checklist-box
+                    .checklist-text
+                .filter-placeholder.loading
+                    .checklist-box
+                    .checklist-text
+                .filter-inner
+                    h4 Airlines
+                    .checkbox
+                        input(type="checkbox" id="al1" value="1") 
+                        label(for='al1') Air Macau
+                            span.addon 8754130
+                    .checkbox
+                        input(type="checkbox" id="al2" value="1") 
+                        label(for='al2') Air Malaysia
+                            span.addon 16844130
+                    .checkbox
+                        input(type="checkbox" id="al2" value="1") 
+                        label(for='al2') Bangkok Airways
+                            span.addon 30633130
+                    .checkbox
+                        input(type="checkbox" id="al3" value="1") 
+                        label(for='al3') Cathay Dragon
+                            span.addon 10346130
+        .flights-page-content__right-col
+            +flightItem(item1)
+            +flightItem(item2)
+
+block script
+    script.
+        $('.goingtime').daterangepicker({
+            "autoApply": true,
+            "singleDatePicker": true,
+            "startDate": moment()
+        });
+        $('.flights-search__search-box').click(function(e) {
+            $(this).addClass('active');
+            e.stopPropagation();
+        });
+        $(document.body).click(function () {
+            $('.flights-search__search-box').removeClass('active');
+            $('.depart-destination.popup-result').removeClass('active');
+        })
+        $('.flights-search__search-box').click(function (e) {
+            $('.depart-destination.popup-result').removeClass('active');
+            e.stopPropagation();
+        })
+         $('.depart-destination.popup-result').click(function (e) {
+             $(this).removeClass('active');
+             e.stopPropagation();
+         })
+
+        $('.popup-input').click(function(e) {
+            $('.depart-destination.popup-result').removeClass('active');
+            var $target = $($(this).attr('data-popup-target'));
+            $target.addClass('active');
+            $('.flights-search__search-box').addClass('active');
+            e.stopPropagation();
+        });
+        setTimeout(function() {
+            $(".loading").removeClass("loading");
+        }, 3000)

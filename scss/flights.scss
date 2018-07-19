@@ -291,7 +291,7 @@ section.flights-form {
             }
         }
     }
-    button.search-btn {
+    a.search-btn {
         margin: 12px 0;
         height: 48px;
         background-image: linear-gradient(135deg, #488bf8 0%, #488bf8 100%);
@@ -299,6 +299,7 @@ section.flights-form {
         box-shadow: none;
         border-radius: 3px;
         font-size: 16px;
+        line-height: 36px;
         &:hover {
             background-image: linear-gradient(135deg, #176cf6 0%, #176cf6 100%);
         }
