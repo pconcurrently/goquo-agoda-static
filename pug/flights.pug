@@ -1,6 +1,8 @@
-extends layout-flights
+extends layout
+include mixins/header
 
 block content
+    +header("Flights")
     .cover-container
         section.titles
             h1 Book [flights] online
@@ -112,21 +114,5 @@ block content
                 .wrapper
                     .sum-traveler 1 adult, Economy
             a(href="./flights-search.html").search-btn.btn.btn-block.btn-primary Search
-    .flights-footer-container
-        h5 
-            a(href="#") Privacy Policy
-        p All material herein © 2005–2018 Agoda Company Pte. Ltd. All Rights Reserved. Agoda is part of Booking Holdings Inc., the world leader in online travel & related services
-        ul.logos
-            li
-                img(src="assets/images/agoda.png")
-            li
-                img(src="assets/images/priceline.png")
-            li
-                img(src="assets/images/kayak.png")
-            li
-                img(src="assets/images/opentable.png")
-            li
-                img(src="assets/images/rentalcars.png")
-            li
-                img(src="assets/images/booking.png")
-        
+block script
+    script(src="assets/js/flights.js")           
