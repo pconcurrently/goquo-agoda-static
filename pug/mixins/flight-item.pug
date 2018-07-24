@@ -5,15 +5,21 @@ mixin flightItem(item)
                 img(src=item.img) 
                 .title= item.airline
             .time-depart 
-                .time= item.timeDepart
+                .time.font-weight-bold= item.timeDepart
                 .location= item.locationDepart
             .stops 
                 .line
                 div= item.stops
             .time-return
-                .time= item.timeReturn
+                .time.font-weight-bold= item.timeReturn
                 .location= item.locationReturn
             .time-duration= item.duration
         .actions
-            .price= item.price
+            .price
+                div= item.price
+                div.des OneTravel
+            .buttons-row
+                a.btn.btn-primary.view-deal(href="#") View Deal
+                a.btn.btn-primary.down-list
+                    span.fa.fa-angle-down
 

@@ -1,9 +1,12 @@
 extends layout
 include mixins/flight-item
+include mixins/header
 
 block content
-    - var item1 = {img: "assets/images/vietjetair.png", airline: 'VietJet Air', timeDepart: '10:00 PM', locationDepart: 'HAN', stops: 'nonstop', timeReturn: '11:15 PM', locationReturn: 'DAD', duration: '1h15m', price: '1260000'}
-    - var item2 = {img: "assets/images/vietnamairlines.png", airline: 'Vietnam Airlines', timeDepart: '10:00 PM', locationDepart: 'HAN', stops: 'nonstop', timeReturn: '11:15 PM', locationReturn: 'DAD', duration: '1h15m', price: '1260000'}
+    - var item1 = {img: "assets/images/vietjetair.png", airline: 'VietJet Air', timeDepart: '10:00 PM', locationDepart: 'HAN', stops: 'nonstop', timeReturn: '11:15 PM', locationReturn: 'DAD', duration: '1h15m', price: '1260000đ'}
+    - var item2 = {img: "assets/images/vietnamairlines.png", airline: 'Vietnam Airlines', timeDepart: '01:15 AM', locationDepart: 'SGD', stops: 'nonstop', timeReturn: '03:00 AM', locationReturn: 'DAD', duration: '1h45m', price: '2260000đ'}
+    - var item3 = {img: "assets/images/jetstar.png", airline: 'Jetstar Pacific', timeDepart: '12:00 PM', locationDepart: 'HAN', stops: 'nonstop', timeReturn: '01:30 PM', locationReturn: 'DAD', duration: '1h30m', price: '1560000đ'}
+    +header("Flights")
     .flights-search.wrapper
         .flights-search__search-box
             ul.search-box__controls
@@ -24,16 +27,16 @@ block content
             .compare-to
                 .compare-to__title Compare vs. Agoda
                 .checkbox.custom-checkbox
-                    input(type="radio", name="compareto", id="cb1", value="1", checked) 
+                    input(type="radio", name="compare", id="cb1", value="1") 
                     label(for='cb1') Priceline
                 .checkbox.custom-checkbox
-                    input(type="radio", name="compareto," id="cb2", value="2") 
+                    input(type="radio", name="compare," id="cb2", value="2") 
                     label(for='cb2') CheapOair
                 .checkbox.custom-checkbox
-                    input(type="radio", name="compareto", id="cb3", value="3") 
+                    input(type="radio", name="compare", id="cb3", value="3") 
                     label(for='cb3') JustFly
                 .checkbox.custom-checkbox
-                    input(type="radio", name="compareto", id="cb4", value="4") 
+                    input(type="radio", name="compare", id="cb4", value="4") 
                     label(for='cb4') None
     .depart-destination.popup-result#depart-popup
                         ul
@@ -133,41 +136,19 @@ block content
                         input(type="checkbox" id="al3" value="1") 
                         label(for='al3') Cathay Dragon
                             span.addon 10346130
+            .filter-wrapper
+                .slider-container.loading
+                    .slider-main#slider-range
         .flights-page-content__right-col
+            .best-flights
+                .best-flights__banner Best Flights
+                    span.fa.fa-info-circle.ml-2(data-toggle="tooltip", data-placement="right", title="We think you'll like these flights based on their duration, price, number of stops and carrier type")
+                +flightItem(item1)
+                +flightItem(item2)
+            +flightItem(item3)
+            +flightItem(item1)
             +flightItem(item1)
             +flightItem(item2)
 
 block script
-    script.
-        $('.goingtime').daterangepicker({
-            "autoApply": true,
-            "singleDatePicker": true,
-            "startDate": moment()
-        });
-        $('.flights-search__search-box').click(function(e) {
-            $(this).addClass('active');
-            e.stopPropagation();
-        });
-        $(document.body).click(function () {
-            $('.flights-search__search-box').removeClass('active');
-            $('.depart-destination.popup-result').removeClass('active');
-        })
-        $('.flights-search__search-box').click(function (e) {
-            $('.depart-destination.popup-result').removeClass('active');
-            e.stopPropagation();
-        })
-         $('.depart-destination.popup-result').click(function (e) {
-             $(this).removeClass('active');
-             e.stopPropagation();
-         })
-
-        $('.popup-input').click(function(e) {
-            $('.depart-destination.popup-result').removeClass('active');
-            var $target = $($(this).attr('data-popup-target'));
-            $target.addClass('active');
-            $('.flights-search__search-box').addClass('active');
-            e.stopPropagation();
-        });
-        setTimeout(function() {
-            $(".loading").removeClass("loading");
-        }, 3000)
+    script(src="assets/js/flights-search.js")

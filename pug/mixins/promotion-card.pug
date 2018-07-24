@@ -1,0 +1,10 @@
+mixin promotionCard(item)
+    .promotion-card
+        .img-wrapper
+            img(src=item.img)
+            .promotion-tag-container
+                .percent-off= item.percentOff
+                .expiry= item.expiry
+        .description= item.description
+        .footer 
+            a(href="#") Get Coupon >

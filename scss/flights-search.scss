@@ -203,10 +203,25 @@
         width: 75%;
         padding: 20px;
         padding-right: 0;
+        
+        .best-flights {
+            border: 1px solid #488bf8;
+            
+            .best-flights__banner {
+                background-color: #488bf8;
+                margin-bottom: -12px;
+                height: 24px;
+                padding-left: 12px;
+                color: #fff;
+                font-weight: 700;
+                font-size: 11px;
+                line-height: 24px;
+                text-transform: uppercase;
+            }
+        }
 
         .flight-item {
             @extend .flex-box;
-            padding: 30px 0;
             background-color: #fff;
             cursor: pointer;
             box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2);
@@ -222,6 +237,8 @@
             .details {
                 @extend .flex-box;
                 width: 75%;
+                padding: 40px 10px;
+                border-right: 1px solid rgba(186, 206, 220, 0.8);
                 > div {
                     width: 25%;
                     text-align: center;
@@ -243,7 +260,42 @@
             }
             .actions {
                 width: 25%;
+                padding: 10px;
                 text-align: center;
+                @extend .flex-box;
+                flex-direction: column;
+                justify-content: flex-end;
+                .price  {
+                    text-align: right;
+                    font-size: 22px;
+                    font-weight: 600;
+
+                    .des {
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: #344755;
+                    }
+                }
+                .buttons-row {
+                    @extend .flex-box;
+                    width: 100%;
+                    .view-deal {
+                        width: 85%;
+                        margin-right: 2px;
+                        border-top-left-radius: 3px;
+                        border-bottom-left-radius: 3px;
+                    }
+                    .down-list {
+                        width: 15%;
+                        border-top-right-radius: 3px;
+                        border-bottom-right-radius: 3px;
+                        padding-left: 6px;
+                    }
+                    .btn {
+                        box-shadow: none;
+                        color: #fff;
+                    }
+                }
             }
         }
     }

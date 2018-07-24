@@ -1,0 +1,153 @@
+extends layout
+include mixins/header
+include mixins/promotion-card
+block content
+    - var item1 = {img: '../assets/images/promo-hongkong.jpg', description: 'Get an additional 10% discount on top of great deals in Hong Kong.', percentOff: '10% off', expiry: 'Expires in 1 week'}
+    - var item2 = {img: '../assets/images/promo-taipei.jpg', description: 'Get 8% off your accommodations in Taipei now.', percentOff: '8% off', expiry: 'Expires in 2 days'}
+    - var item3 = {img: '../assets/images/promo-phangan.jpg', description: 'Dreaming of the beach? Get 5% off in Koh Phangan.', percentOff: '5% off', expiry: 'Expires in 4 days'}
+    - var item4 = {img: '../assets/images/promo-rome.jpg', description: 'Explore Rome and get 5% off your booking.', percentOff: '5% off', expiry: 'Expires today'}
+    - var item5 = {img: '../assets/images/promo-barcelona.jpg', description: 'Weekly Offer - Get 5% off your stay while you explore Barcelona.', percentOff: '5% off', expiry: 'Expires in 5 days'}
+    +header("Deals")
+    .search-box-2
+        .search-result-backdrop
+        .container
+            .destination.col-sm-4
+                i.search-icon.fa.fa-search
+                .input-holder
+                    input#destination-input(value="Ha Noi")
+                .destination-search-results.popup-result
+                    ul
+                        li.result-item
+                            i.fa.fa-hotel 
+                            span &nbsp Ha Noi, Viet Nam
+                        li.result-item
+                            i.fa.fa-star
+                            span &nbsp Ha Noi Club, Viet Nam
+                        li.result-item
+                            i.fa.fa-coffee
+                            span &nbsp Ha Noi Central, Viet Nam
+            .select-date.col-sm-4
+                .start-date
+                    .input-group
+                        span.input-group-addon
+                            i.fa.fa-calendar
+                        input.form-control#start-date-picker
+            .box-and-button.col-sm-4    
+                .occupancy-box
+                    i.box-icon.fa.fa-users
+                    .box-results
+                        .box-people
+                            span.loading.adults-text 3 adults, 
+                            span.loading.children-text 0 children
+                        .box-rooms  
+                            span.loading.rooms 3 rooms
+                    .occupancy-edit.popup-result
+                        .plusminusrow
+                            span.minus
+                                i.fa.fa-minus
+                            span.amount(data-amount="3") 3
+                            span.unit Rooms
+                            span.plus
+                                i.fa.fa-plus
+                        .plusminusrow
+                            span.minus
+                                i.fa.fa-minus
+                            span.amount(data-amount="3") 3
+                            span.unit Adults
+                            span.plus
+                                i.fa.fa-plus
+                        .plusminusrow
+                            span.minus
+                                i.fa.fa-minus
+                            span.amount(data-amount="0", data-allow-zero="true") 0
+                            span.unit Children
+                            span.plus
+                                i.fa.fa-plus
+                .search-button  
+                    a.loading(href="#") 
+                        span.search-text.loading Search
+    .deals-wrapper
+        .promo-header
+            .promo-header-img
+            .promo-title
+                span.fa.fa-tag.fa-2x
+                .title-content
+                    h1 Today's deals
+                    p Spontaneous savings. Available nowhere else. Bookmark this page and check back daily.
+        .promo-wrapper
+            +promotionCard(item1)
+            +promotionCard(item2)
+            +promotionCard(item3)
+            +promotionCard(item4)
+            +promotionCard(item5)
+        .promo2-wrapper
+block script
+    script.
+        setTimeout(function() {
+            $(".loading").removeClass("loading");
+
+            $('#start-date-picker').daterangepicker({
+                "autoApply": true,
+                "startDate": moment(),
+                "endDate": moment().add(1, 'days')
+            }, function(start, end, label) {
+            });
+        }, 3000)
+        $('.occupancy-box').click(function() {
+            $('.occupancy-edit').css('display', 'block');
+            $('.search-result-backdrop').css('display', 'block');
+        });
+        $('#destination-input').click(function() {
+            $('.destination-search-results').css('display', 'block');
+            $('.search-result-backdrop').css('display', 'block');
+        });
+        $('.search-result-backdrop').click(function() {
+            $(this).css('display', 'none');
+
+            $('.popup-result').css('display', 'none');
+        })
+        $('.popup-result ul li').click(function() {
+            $('.search-result-backdrop').css('display', 'none');
+            $('.popup-result').css('display', 'none');
+        });
+
+        function setSpanText(unit, amount) {
+            if (unit === 'Adults') {
+                $('span.adults-text').text(amount + ' adults, ');
+            } else if (unit === 'Children') {
+                $('span.children-text').text(amount + ' children');
+            } else {
+                $('span.rooms').text(amount + ' rooms');
+            }
+        }
+
+        $('span.minus').click(function() {
+            var $amount = $(this).siblings('.amount');
+            var $unit = $(this).siblings('.unit');
+
+            var amount = $amount.attr('data-amount');
+            var allowZero = $amount.attr('data-allow-zero');
+            var unit = $unit.text();
+            if (amount > 1 || ( allowZero && amount == 1)) {
+                amount--;
+                $amount.attr('data-amount', amount);
+                $amount.text(amount);
+
+                setSpanText(unit, amount);
+            };
+        })
+        $('span.plus').click(function() {
+            var $amount = $(this).siblings('.amount');
+            var $unit = $(this).siblings('.unit');
+
+            var amount = $amount.attr('data-amount');
+            var unit = $unit.text();
+
+            amount++;
+            $amount.attr('data-amount', amount);
+            $amount.text(amount);
+
+            setSpanText(unit, amount);
+        })
+
+        

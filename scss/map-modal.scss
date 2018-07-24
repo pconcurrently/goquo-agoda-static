@@ -1,9 +1,13 @@
 .map-modal {
     width: 98%;
     height: 94%;
+    max-width: 98%;
 }
-#map-modal .modal-body {
-    padding: 0;
+#map-modal {
+    padding-right: 0 !important;
+    .modal-body {
+        padding: 0;
+    }
 }
 .google-map-container {
     height: 82vh;

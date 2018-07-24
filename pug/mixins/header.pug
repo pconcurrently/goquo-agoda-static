@@ -1,0 +1,14 @@
+mixin header(route) 
+    header.main-header
+        a.logo(href="./home.html")
+            img.logo-image(src="assets/images/agoda-logo.svg")
+        ul.nav-items
+            li
+                a(href="./home.html", class={'active': route === 'Rooms'})
+                    | Rooms
+            li    
+                a(href="./flights.html", class={'active': route === 'Flights'})
+                    | Flights
+            li
+                a(href="./today-deals.html", class={'active': route === 'Deals'})
+                    | Today's deals
